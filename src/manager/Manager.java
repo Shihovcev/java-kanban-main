@@ -96,8 +96,4 @@ public class Manager {
         this.epic.remove(id);
     }
 
-
-
-
-
 }

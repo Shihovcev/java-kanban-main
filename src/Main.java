@@ -36,6 +36,7 @@ public class Main {
         System.out.println(manager.getAllTask());
         System.out.println(manager.getAllSubtask());
         System.out.println(manager.getAllEpic());
+
     }
 }
 
