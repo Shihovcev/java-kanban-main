@@ -4,7 +4,7 @@ import java.util.Objects;
 
 public class Task {
     protected static Integer id = 1;
-    private final Integer taskId;
+    protected final Integer taskId;
     private String title;
     private String description;
     private Status status;
@@ -14,7 +14,6 @@ public class Task {
         this.title = title;
         this.description = description;
         status = Status.NEW;
-
     }
 
     public String getTitle() {
@@ -51,7 +50,7 @@ public class Task {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Task task = (Task) o;
-        return  taskId.equals(task.taskId);
+        return taskId.equals(task.taskId);
     }
 
     @Override
@@ -62,7 +61,7 @@ public class Task {
     @Override
     public String toString() {
         return "{" +
-                "ID='" + taskId +
+                "id='" + taskId +
                 ", title='" + title + '\'' +
                 ", status=" + status +
                 '}';

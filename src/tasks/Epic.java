@@ -21,7 +21,7 @@ public class Epic extends Task{
 
     public void removeSubtask(Subtask subtask){
         subtasks.remove(subtask);
-        updateStatus();
+        // updateStatus();
     }
 
     public void updateStatus(){ //ЗАмена статуса у эпика
@@ -29,18 +29,18 @@ public class Epic extends Task{
         int allDone = 0;
 
         for (Subtask subtask : subtasks) {
-            if(subtask.getStatus() == Status.DONE){
-                allDone++;
-            }else if(subtask.getStatus() == Status.IN_PROGRESS){
+            if (subtask.getStatus() == Status.IN_PROGRESS){
                 allInProgress++;
+            }else if(subtask.getStatus() == Status.DONE){
+                allDone++;
             }
         }
-        for (Subtask subtask : subtasks) {
-            if(allDone>0 && allDone == subtasks.size()){
-                setStatus(Status.DONE);
-            }else if(allDone>0 || allInProgress>0){
-                setStatus(Status.IN_PROGRESS);
-            }
+        if(allDone > 0 && allDone == subtasks.size()){
+            setStatus(Status.DONE);
+        }else if(allInProgress > 0 || allDone > 0){
+            setStatus(Status.IN_PROGRESS);
+        }else {
+            setStatus(Status.NEW);
         }
 
     }
