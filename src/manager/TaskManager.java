@@ -26,5 +26,6 @@ public interface TaskManager {
      void deleteTaskById (Integer id); //удаление задачи по ID
      void deleteSubtaskById (Integer id); //удаление подзадачи по ID
      void deleteEpicById (Integer id);// удаление эпика по ID
-     ArrayList<Task>  getHistory (); // показывает историю последних 10 задач
+
+     ArrayList<Task> getHistory();
 }
