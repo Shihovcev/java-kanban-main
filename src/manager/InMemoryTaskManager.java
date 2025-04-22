@@ -168,9 +168,13 @@ public class InMemoryTaskManager implements TaskManager{
         int allInProgress = 0;
         int allDone = 0;
 
-        if (epicId == null) return;
+        if (epicId == null) {
+            return;
+        }
 
-        if (!epic.containsKey(epicId)) return;
+        if (!epic.containsKey(epicId)) {
+            return;
+        }
 
         if (epic.get(epicId).getSubtaskList().isEmpty()) {
             epic.get(epicId).setStatus(Status.NEW);
