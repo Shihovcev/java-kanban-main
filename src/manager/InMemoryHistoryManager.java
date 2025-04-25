@@ -25,7 +25,7 @@ public class InMemoryHistoryManager implements HistoryManager {
         Node currentNode = head;
         while (currentNode != null) {
             historyArray.add(currentNode.getTask());
-            currentNode = currentNode.getNext(); // Откуда берет next
+            currentNode = currentNode.getNext();
         }
 
         return historyArray;
