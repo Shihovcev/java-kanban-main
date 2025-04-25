@@ -34,4 +34,39 @@ public class InMemoryHistoryManagerTest {
             taskD.setId(4);
         }
 
+    @Test
+    void givenNewHistoryManager_whenInitialized_thenHistoryIsEmpty() {
+        assertTrue(historyManager.getHistory().isEmpty());
+    }
+
+    @Test
+    void givenTask_whenModifiedAfterAddingToHistory_thenStoredTaskIsUnaffected() {
+        historyManager.add(taskA);
+        taskA.setDescription("Description B modified");
+        assertNotEquals(historyManager.getHistory().getFirst().getDescription(),
+                taskA.getDescription());
+    }
+
+
+    @Test
+    void givenTask_whenAddedToHistory_thenHistoryNotEmpty() {
+        historyManager.add(taskA);
+        historyManager.add(taskB);
+        historyManager.add(taskC);
+        assertFalse(historyManager.getHistory().isEmpty());
+        assertEquals(3, historyManager.getHistory().size());
+    }
+
+    @Test
+    void givenThreeTasks_whenAddingAgainFirstTask_thenItBecomesLastInHistory() {
+        historyManager.add(taskA);
+        historyManager.add(taskB);
+        historyManager.add(taskC);
+        historyManager.add(taskA);
+        List<Task> expectedOrder = Arrays.asList(taskB, taskC, taskA);
+        assertEquals(expectedOrder, historyManager.getHistory());
+    }
+
+
+
 }
